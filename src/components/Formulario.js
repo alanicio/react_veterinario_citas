@@ -22,6 +22,7 @@ const Formulario = () => {
 			[e.target.name]: e.target.value,
 		});
 	}
+	//
 
 	// Extraer los valores
 	const { mascota, propietario, fecha, hora, sintomas} = cita;
