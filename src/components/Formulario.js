@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Formulario = () => {
 	// Crear State de citas
@@ -22,7 +23,6 @@ const Formulario = () => {
 			[e.target.name]: e.target.value,
 		});
 	}
-	//
 
 	// Extraer los valores
 	const { mascota, propietario, fecha, hora, sintomas} = cita;
@@ -38,8 +38,12 @@ const Formulario = () => {
 			return;
 		}
 
-		console.log('agrgando...');
+		//Eliminar mensaje previo de error
+		actualizarError(false);
 
+		//Asignar ID
+		cita.id = uuidv4();
+		console.log(cita);
 	}
 
 	return (
