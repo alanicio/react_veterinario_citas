@@ -3,13 +3,16 @@ import Formulario from './components/Formulario';
 import Cita from './components/Cita';
 
 function App() {
-
   // Citas en localStorage
   let citasIniciales = JSON.parse(localStorage.getItem('citas'));
   if(!citasIniciales){
     citasIniciales = [];
   }
 
+  /* 
+    NOTA: La funcion set de useState corre TODO el codigo del componente funcional EXCEPTO
+          el codigo dentro del useState    
+  */ 
   // Arreglo de citas
   const [citas, guardarCitas] = useState(citasIniciales);
 
@@ -33,7 +36,7 @@ function App() {
 
   // Función que elimina una cita por su id
   const eliminarCita = id => {
-    const nuevasCitas = citas.filter(cita => cita.id != id);
+    const nuevasCitas = citas.filter(cita => cita.id !== id);
     guardarCitas(nuevasCitas);
   }
 
@@ -55,7 +58,7 @@ function App() {
             {citas.map((cita) => (
                 <Cita 
                   key={cita.id}
-                  {...cita}
+                  cita={cita}
                   eliminarCita={eliminarCita}
                 />
               ))}

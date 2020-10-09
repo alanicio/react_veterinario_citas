@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 const Formulario = ({crearCita}) => {
 	// Crear State de citas
@@ -60,9 +61,7 @@ const Formulario = ({crearCita}) => {
 
 	return (
 		<Fragment>
-
 			<h2>Crear Cita</h2>
-
 			{ error
 				?
 					<p className="alerta-error">Todos los campos son obligatorios</p>
@@ -127,6 +126,15 @@ const Formulario = ({crearCita}) => {
 
 		</Fragment>
 	);
+}
+/*
+	NOTA: PropTypes sirve para documentar propiedades, en este caso, si no se cumple lo documentado (por
+        ejemplo decir que un dato es una funcion y se pasa como objeto) la consola marcara warnings.
+        isRequired es para documentarlo como obligatorio. si esta documentación no se cumple, se marcara
+        warning en la consola
+*/
+Formulario.propTypes = {
+	crearCita: PropTypes.func.isRequired
 }
 
 export default Formulario;
